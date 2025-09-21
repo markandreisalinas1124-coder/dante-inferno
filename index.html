@@ -1,133 +1,109 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<img src="dante-s-inferno-23.jpg" alt="Dante's Inferno Book Cover" width="300">
-  <title>Dante's Inferno - The 9 Circles of Hell</title>
+  <title>Dante’s Inferno Slideshow</title>
   <style>
     body {
-      font-family: 'Georgia', serif;
-      background-color: #111;
-      color: #f0e6d2;
+      font-family: Georgia, serif;
       margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    header {
-      background: linear-gradient(to right, #5a0000, #1a0000);
+      background: #111;
       color: #fff;
       text-align: center;
-      padding: 2rem 1rem;
     }
-    header h1 {
-      font-size: 2.5rem;
-      margin: 0;
+    .slide {
+      display: none;
+      padding: 30px;
     }
-    nav {
-      background: #2a0000;
-      padding: 1rem;
-      text-align: center;
+    .active {
+      display: block;
     }
-    nav a {
-      color: #ff4d4d;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
+    img {
+      max-width: 60%;
+      height: auto;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 0 15px red;
     }
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem;
+    .buttons {
+      margin-top: 20px;
     }
-    .circle {
-      margin-bottom: 2rem;
-      border-left: 4px solid #ff4d4d;
-      padding-left: 1rem;
+    button {
+      background: crimson;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
     }
-    .circle h2 {
-      color: #ff9999;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #1a0000;
-      color: #888;
+    button:hover {
+      background: darkred;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Dante's Inferno</h1>
-    <p>The Nine Circles of Hell</p>
-  </header>
 
-  <nav>
-    <a href="#circle1">1. Limbo</a>
-    <a href="#circle2">2. Lust</a>
-    <a href="#circle3">3. Gluttony</a>
-    <a href="#circle4">4. Greed</a>
-    <a href="#circle5">5. Wrath</a>
-    <a href="#circle6">6. Heresy</a>
-    <a href="#circle7">7. Violence</a>
-    <a href="#circle8">8. Fraud</a>
-    <a href="#circle9">9. Treachery</a>
-  </nav>
+  <!-- Slide 1 -->
+  <div class="slide active">
+    <h1>Dante’s Inferno</h1>
+    <img src="dante-s-inferno-23.jpg" alt="Dante's Inferno Book Cover">
+    <p><b>About Dante:</b> Dante Alighieri (1265–1321) was an Italian poet, best known for his masterpiece <i>The Divine Comedy</i>, a three-part epic that explores Hell, Purgatory, and Heaven.  
+    <br><br>
+    <b>The Inferno:</b> The first part of the trilogy, describes Dante’s journey through the 9 circles of Hell, guided by the Roman poet Virgil. Each circle punishes sinners according to the severity of their sins.</p>
+  </div>
 
-  <section>
-    <div class="circle" id="circle1">
-      <h2>Circle 1: Limbo</h2>
-      <p>The unbaptized and virtuous pagans. They are not tormented but live without hope of seeing God.</p>
-    </div>
+  <!-- Slide 2 -->
+  <div class="slide">
+    <h1>The Nine Circles of Hell</h1>
+    <img src="9circles.jpg" alt="9 Circles of Hell">
+    <p>The structure of Hell is divided into 9 circles, each for a specific sin: Limbo, Lust, Gluttony, Greed, Wrath, Heresy, Violence, Fraud, and Treachery. Punishments grow harsher as one descends deeper.</p>
+  </div>
 
-    <div class="circle" id="circle2">
-      <h2>Circle 2: Lust</h2>
-      <p>Sinners blown about by violent winds, symbolizing the power of lust to drive one uncontrollably.</p>
-    </div>
+  <!-- Example for Slide 3 (Circle 1) -->
+  <div class="slide">
+    <h1>First Circle: Limbo</h1>
+    <img src="limbo.jpg" alt="Circle 1: Limbo">
+    <p><b>Who is here?</b> Virtuous non-Christians and unbaptized souls.  
+    <br><b>Punishment:</b> They are not tormented, but forever separated from God’s presence.</p>
+  </div>
 
-    <div class="circle" id="circle3">
-      <h2>Circle 3: Gluttony</h2>
-      <p>The gluttonous lie in vile slush, representing the excess and waste of their indulgence.</p>
-    </div>
+  <!-- Buttons -->
+  <div class="buttons">
+    <button onclick="prevSlide()">Previous</button>
+    <button onclick="nextSlide()">Next</button>
+  </div>
 
-    <div class="circle" id="circle4">
-      <h2>Circle 4: Greed</h2>
-      <p>The hoarders and the wasters, rolling heavy weights against each other for eternity.</p>
-    </div>
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
 
-    <div class="circle" id="circle5">
-      <h2>Circle 5: Wrath</h2>
-      <p>The wrathful fight each other on the surface of the river Styx, while the sullen gurgle beneath it.</p>
-    </div>
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === index) slide.classList.add("active");
+      });
+    }
 
-    <div class="circle" id="circle6">
-      <h2>Circle 6: Heresy</h2>
-      <p>Heretics are trapped in flaming tombs for rejecting spiritual truth.</p>
-    </div>
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
 
-    <div class="circle" id="circle7">
-      <h2>Circle 7: Violence</h2>
-      <p>Divided into three rings: violence against others, self (suicides), and God/nature.</p>
-    </div>
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+  </script>
 
-    <div class="circle" id="circle8">
-      <h2>Circle 8: Fraud</h2>
-      <p>The fraudulent are punished in ten ditches (Malebolge), each for a different kind of deceit.</p>
-    </div>
-
-    <div class="circle" id="circle9">
-      <h2>Circle 9: Treachery</h2>
-      <p>The traitors are frozen in ice, farthest from God's warmth and light.</p>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Dante's Inferno Website | Created for learning purposes</p>
-  </footer>
 </body>
 </html>
 
+
  
+
 
 
 
